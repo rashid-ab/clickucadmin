@@ -1,0 +1,72 @@
+
+@media (max-width:575px){
+ .users_table{
+    width:600px;
+  }
+  .table-wrap{
+    overflow-x:scroll;
+  }
+  .w-sm-100{
+    width:100% !important;
+  }
+ 
+}
+
+@media (max-width:400px){
+    #user_type_drop.dropdown-toggle::after ,  #user_type_drop_2.dropdown-toggle::after {
+        right: 12px;
+        position: absolute;
+        top: 18px;
+    } 
+    .search_fields .dropdown ,  #user_type_drop , #user_type_drop_2, .table-search-field{
+        width:100%;
+    }
+    #user_type_drop_2{
+        margin-bottom:10px;
+    }
+    .table-search-field{
+        margin-bottom:15px;
+        margin-top:10px;
+        margin-right:0px !important;
+    }
+    .tab-links .tab-links-a{
+        font-size:14px !important;
+        padding-right:10px !important;
+    }
+}
+@media (min-width:450px){
+    .ml-auto-450{
+        margin-left:auto !important;
+    }
+}
+@media (min-width:992px){
+    .position-lg-fixed{
+       position:fixed !important;
+       top:0px;
+    }
+    .ml-lg-25{
+        margin-left:25% !important;
+    }
+}
+@media(max-width:1259px) and (min-width:992px){
+    .justify-1200-content-center{
+        justify-content: center;
+    }
+}
+@media (max-width:991px){
+    .owl-prev{
+        left:10px;
+    }
+    .owl-next {
+        right:10px;
+    }
+}
+@media (max-width:991px){
+   .user-avatar img{
+       width:100px !important;
+       height:100px !important;
+   }
+   .user-info-account h5{
+       font-size:18px;
+   }
+}
