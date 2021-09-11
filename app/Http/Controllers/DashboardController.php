@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use App\Mail\ReplyMail;
 use App\Web_common;
 use Auth;
-use DB;
 use Hash;
 use App\User;
-use App\Film;
-use App\Season;
-use App\SeasonNo;
-use App\SeasonEpisode;
+use App\Redeem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
@@ -89,10 +85,10 @@ class DashboardController extends Controller
         $User=User::where('device_token','!=','')->get();
         // echo $User;
         foreach($User as $use){
-            
+
             $tokens[] = $use->device_token;
             echo $use->device_token;
-            
+
         }
         $this->send_push_noti('Free UC','You won 60 UC',$tokens);
     }
@@ -147,7 +143,7 @@ class DashboardController extends Controller
 
     /****************** Zaid ******************************************/
 
-    
+
     public function changepassword()
     {
         return view('changePassword');
@@ -185,11 +181,11 @@ class DashboardController extends Controller
 
     public function redeem(Request $request)
     {
-        
-        $user=User::where('id',$request->id)->update(['redeem_uc'=>0,'status'=>0]);
+
         $users=User::where('id',$request->id)->first();
+        Redeem::where('id',$request->redeem_id)->delet();
         $device_token[] = $users->device_token;
-        $this->send_push_noti('Free UC','You won '.$request->uc.' UC',$device_token);
+        $this->send_push_noti('Congrats! You won '.$request->uc.' UC',$device_token,'Go check your account');
         $data="$request->uc sent to your Account!";
         return response()->json(['status' => "200",
         'description' => "Forget Password",

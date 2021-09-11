@@ -74,13 +74,10 @@ class AuthController extends Controller
     {
         return response()->json([
             'status'=>'success',
-            'access_token' => $token,
+            'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() / 60,
+            'expires_in' => auth('api')->factory()->getTTL(),
             'user' => auth('api')->user(),
         ]);
-
-        // $user=User::where('email',$email)->update(['token'=>$token]);
-        // return response()->json(['status'=>'success','data'=>User::where('email',$email)->first()]);
     }
 }

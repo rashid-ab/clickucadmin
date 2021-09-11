@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Redeem;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -299,13 +300,18 @@ class ApiController extends Controller {
             $coins=$request->uc*1000;
             $remianing_coins=$user->coins-$coins;
             $tokenupdate=User::where('email',$request->email)->update([
-                'pubg_id' => $request->id,
-                'redeem_uc' => $user->redeem_uc+$request->uc,
+                // 'pubg_id' => $request->id,
+                // 'redeem_uc' => $user->redeem_uc+$request->uc,
                 'uc' => $remianing_uc,
                 'coins' => $remianing_coins,
                 'status'=>1
             ]);
-
+            $tokenupdate=Redeem::create([
+                'user_id'=> $request->user_id,
+                'pubg_id' => $request->id,
+                'redeem_uc' => $request->uc,
+                'status'=>1
+            ]);
             if ($tokenupdate) {
                 return response()->json(['status' => "200",
                 'description' => "Token",

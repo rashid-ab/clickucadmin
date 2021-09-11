@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 1000)->nullable();
 			$table->string('device_token', 1000)->nullable();
 			$table->string('remember_token', 1000)->nullable();
+			$table->string('online_status', 250)->default(0);
 			$table->string('status', 250)->default(0);
 			$table->timestamps();
 		});
