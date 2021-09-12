@@ -219,10 +219,10 @@ class ApiController extends Controller {
                 return response()->json(['status' => "200",
                 'message' => "failure"]);
             }
-            $user=User::where('email',$request->email)->first();
+            $user=auth('api')->user();
                 return response()->json(['status' => "200",
                 'description' => "User",
-                'message' => "success", 'data' =>auth('api')->user()]);
+                'message' => "success", 'data' =>$user->setAttribute('token',$request->token)]);
         }
 
         /*======================  Get Token  =====================*/
