@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use JWTAuth;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\JWTAuth as JWTAuthJWTAuth;
+
 class AuthController extends Controller
 {
     /**
@@ -78,7 +80,7 @@ class AuthController extends Controller
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL(),
-            'user' => auth('api')->user(),
+            'user' => JWTAuth::toUser($token),
         ]);
     }
 }
