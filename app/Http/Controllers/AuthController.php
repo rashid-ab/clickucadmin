@@ -75,12 +75,13 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token,$email)
     {
+        $user=JWTAuth::user();
         return response()->json([
             'message'=>'success',
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL(),
-            'user' =>JWTAuth::user(),
+            'user' =>$user->setAttribute('token',$token),
         ]);
     }
 }
