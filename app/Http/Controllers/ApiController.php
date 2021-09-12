@@ -214,7 +214,6 @@ class ApiController extends Controller {
         /*======================  Get User  =====================*/
 
         public function getUser(Request $request){
-            return $request->token;
             $user=auth('api')->user();
             if(!$user){
                 return response()->json(['status' => "200",
@@ -223,7 +222,7 @@ class ApiController extends Controller {
             $user=User::where('email',$request->email)->first();
                 return response()->json(['status' => "200",
                 'description' => "User",
-                'message' => "success", 'data' => $user]);
+                'message' => "success", 'data' =>auth('api')->user()]);
         }
 
         /*======================  Get Token  =====================*/
