@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         $admins = array(
             array(
                 "name" => "System Admin",
-                "email" => "2k9140@gmail.com",
+                "email" => "apphouseo@gmail.com",
                 "password" => Hash::make('respecteduc'),
 
             ),
