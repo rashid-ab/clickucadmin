@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use JWTAuth;
 use Illuminate\Http\Request;
 class AuthController extends Controller
 {
@@ -25,7 +26,7 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-        if (! $token = auth('api')->attempt($credentials)) {
+        if (! $token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'No User Exist']);
         }
         return $this->respondWithToken($token,$credentials['email']);
