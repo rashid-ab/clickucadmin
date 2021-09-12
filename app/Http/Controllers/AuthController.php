@@ -75,7 +75,6 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token,$email)
     {
-        print_r($token);
         return response()->json([
             'message'=>'success',
             'token' => $token,
