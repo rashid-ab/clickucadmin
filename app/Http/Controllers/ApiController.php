@@ -121,6 +121,7 @@ class ApiController extends Controller {
         /*======================  Silver Coins =====================*/
         public function silver_coins(Request $request){
             $user=auth('api')->user();
+            print_r($user);
             if(!$user){
                 return response()->json(['status' => "200",
                 'message' => "failure"]);
@@ -213,6 +214,7 @@ class ApiController extends Controller {
         /*======================  Get User  =====================*/
 
         public function getUser(Request $request){
+            return $request->token;
             $user=auth('api')->user();
             if(!$user){
                 return response()->json(['status' => "200",
