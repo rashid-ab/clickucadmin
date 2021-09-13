@@ -279,7 +279,7 @@ class ApiController extends Controller {
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
             // More headers
-            $headers .= 'From: apphouseo@gmail.com' . "\r\n";
+            $headers .= 'From: apphouse0@gmail.com' . "\r\n";
             mail($to, $subject, $message, $headers);
                 return response()->json(['status' => "200",
                 'description' => "Forget Password",
