@@ -22,7 +22,7 @@ if ($users_results->num_rows > 0) {
  while($selected_orders = $users_results->fetch_assoc()) {
         unset($users_token);
         $users_token[]= $selected_orders['device_token'];
-        $title ="Scratch Limit";
+        $title ="Crate Limit";
         $body =  "Your limit is Renew now.Go to the App and Earn your UC";
         echo   send_push($title, $body, $users_token,$order_id);
     }
