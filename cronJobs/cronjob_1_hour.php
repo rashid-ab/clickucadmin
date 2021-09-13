@@ -5,14 +5,14 @@
 // $password = "";
 // $dbname = "purify";
 $servername = "localhost";
-$username = "u595034023_getuc";
-$password = "Respecteduc2021";
-$dbname = "u595034023_getuc";
+$username = "u109931872_clicky";
+$password = "Clickuc2021";
+$dbname = "u109931872_clicky";
 date_default_timezone_set("Europe/Stockholm");
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 $users = "SELECT * from users WHERE device_token!=''";
 $update = "UPDATE users SET silver_limit='100',golden_limit='50',platinum_limit='30'";
 $users_results = $conn->query($users);
@@ -39,7 +39,7 @@ else{echo 'no';}
         curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
         curl_setopt( $ch,CURLOPT_POST, true );
         curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );        
+        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
         //Custom data to be sent with the push
         $data2=array(
             'order_id'=>$order_id,
@@ -55,7 +55,7 @@ else{echo 'no';}
                 'Another Data' => 'Another Data',
                 'click_action' => 'OPEN_ACTIVITY',
                 'sound'=>'default'
-               
+
             );
 
         //This array contains, the token and the notification. The 'to' attribute stores the token.
@@ -71,14 +71,14 @@ else{echo 'no';}
         //Setup headers:
         $headers = array();
         $headers[] = 'Content-Type: application/json';
-        
-        $headers[] = 'Authorization: key= AAAA_i3zE_w:APA91bHLc6FS-w_ZJLiD6l4ga6DDALcmh23ShgGKuW4TstHsjmNaiypaolSBhktLt2xmC77jL_bqJOIj6SCs9W5Uk7AwqR_ndByT7IYH70bQfmBxuzV5Vdgp5iEUa7HgfuF9cuxa1g8r';
+
+        $headers[] = 'Authorization: key= AAAAuAma-80:APA91bEm160o7dHP9wsiHf67ntA9D6l6v9b--CCNnHuDR2zSC-KypYnAP-Xph1PDQFbDeFD-yPw65O4vzx2lSDUoE08YReRRu1xdU4L6jpqvJ_DhbQ7Mg-KfxS8t5xiwCNs1ymzxrSpO';
 
 
         //Setup curl, add headers and post parameters.
-        
+
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-        curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);       
+        curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
 
         //Send the request
         $response = curl_exec($ch);
