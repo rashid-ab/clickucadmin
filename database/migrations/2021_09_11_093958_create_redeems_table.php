@@ -18,6 +18,8 @@ class CreateRedeemsTable extends Migration
             $table->string('user_id', 250)->nullable();
             $table->string('pubg_id', 250)->nullable();
             $table->string('redeem_uc', 250)->default(0);
+            $table->string('uc', 250)->default(0);
+            $table->string('coins', 250)->default(0);
             $table->string('status', 250)->default(0);
             $table->timestamps();
         });
