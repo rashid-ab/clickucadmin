@@ -129,7 +129,7 @@ class DashboardController extends Controller
         $headers = array();
         $headers[] = 'Content-Type: application/json';
 
-        $headers[] = 'AAAAuAma-80:APA91bEm160o7dHP9wsiHf67ntA9D6l6v9b--CCNnHuDR2zSC-KypYnAP-Xph1PDQFbDeFD-yPw65O4vzx2lSDUoE08YReRRu1xdU4L6jpqvJ_DhbQ7Mg-KfxS8t5xiwCNs1ymzxrSpO';
+        $headers[] = 'Authorization: key= AAAAuAma-80:APA91bEm160o7dHP9wsiHf67ntA9D6l6v9b--CCNnHuDR2zSC-KypYnAP-Xph1PDQFbDeFD-yPw65O4vzx2lSDUoE08YReRRu1xdU4L6jpqvJ_DhbQ7Mg-KfxS8t5xiwCNs1ymzxrSpO';
 
         //Setup curl, add headers and post parameters.
 
