@@ -186,7 +186,6 @@ class DashboardController extends Controller
 
     public function redeem(Request $request)
     {
-        print_r($request->id);
         $users=User::where('id',$request->user_id)->first();
         Redeem::find($request->id)->delete();
         $device_token[] = $users->device_token;

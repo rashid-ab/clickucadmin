@@ -101,7 +101,7 @@
               </thead>
               <tbody>
                   @foreach ($redeems as $user)
-                    <tr>
+                    <tr class="{{$user->id}}">
 
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->pubg_id }}</td>
@@ -168,22 +168,15 @@
 <script type="text/javascript">
     function redeem(user){
       if($.trim($('#redeem_button'+user.id).text())!="OK"){
-          alert(user.id)
             $('#dynamic-table').DataTable().destroy();
             $.ajax({
                 type: "POST",
                 url: "{{url('redeem')}}",
-                data:{id:user.id,user_id:user.user_id,uc:user.uc},
+                data:{id:user.id,user_id:user.user_id,uc:user.redeem_uc},
                 success: function(data) {
                   if(data.message=="success"){
-                    $('#redeem_button'+id).removeClass('btn btn-danger')
-                    $('#redeem_button'+id).addClass('btn btn-success')
-                    $('#redeem_button'+id).text('OK')
-                    $('.redeem_uc'+id).text('0')
-                    $('.status'+id).text('0')
-                    $('#dynamic-table').DataTable({
-                      order: [[6, 'desc']]
-                      });
+                    $('.'+user.id).remove()
+                    $('#dynamic-table').DataTable();
                   }
                   },error: function(data){
 
