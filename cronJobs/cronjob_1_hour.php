@@ -24,14 +24,14 @@ if ($users_results->num_rows > 0) {
         $users_token[]= $selected_orders['device_token'];
         $title ="Wow! Your  Crate Limit is Renew Now";
         $body =  "Go to the App and Earn your UC";
-        echo   send_push($title, $body, $users_token,$order_id);
+        echo   send_push($title, $body, $users_token);
     }
 
 }
 else{echo 'no';}
 
 
- function send_push($title , $body ,$tokens,$order_id)
+ function send_push($title , $body ,$tokens)
     {
         // return $tokens;
 
@@ -41,10 +41,7 @@ else{echo 'no';}
         curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
         curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
         //Custom data to be sent with the push
-        $data2=array(
-            'order_id'=>$order_id,
-            'notification_type'=>'rating'
-        );
+        
         $data = array
             (
                 'message'      => 'here is a message. message',

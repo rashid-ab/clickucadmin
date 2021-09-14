@@ -86,16 +86,16 @@ class DashboardController extends Controller
 
     /****************** Bilal ******************************************/
 
-    public function send_noti(){
+    public function send_noti(Request $request){
         $User=User::where('device_token','!=','')->get();
         // echo $User;
         foreach($User as $use){
 
             $tokens[] = $use->device_token;
-            echo $use->device_token;
+            $this->send_push_noti($request->title,$request->body,$tokens);
 
         }
-        $this->send_push_noti('Free UC','You won 60 UC',$tokens);
+        return redirect()->back();
     }
     public function send_push_noti($title, $body, $tokens)
     {
@@ -190,7 +190,7 @@ class DashboardController extends Controller
         $users=User::where('id',$request->id)->first();
         Redeem::where('id',$request->redeem_id)->delet();
         $device_token[] = $users->device_token;
-        $this->send_push_noti('Congrats! You won '.$request->uc.' UC',$device_token,'Go check your account');
+        $this->send_push_noti('Congrats! You won '.$request->uc.' UC','Go check your account',$device_token);
         $data="$request->uc sent to your Account!";
         return response()->json(['status' => "200",
         'description' => "Win UC",
