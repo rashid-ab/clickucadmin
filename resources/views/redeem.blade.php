@@ -91,35 +91,33 @@
               <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
                 <th>PUBG ID</th>
                 <th>Coins</th>
                 <th>UC</th>
                 <th>Redeem UC</th>
                 <th>Current Status</th>
-                {{--  <th>Actions</th>  --}}
+                <th>Actions</th>
               </tr>
               </thead>
               <tbody>
-                  @foreach ($users as $user)
+                  @foreach ($redeems as $user)
                     <tr>
 
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
                         <td>{{ $user->pubg_id }}</td>
                         <td>{{ $user->coins }}</td>
                         <td>{{ $user->uc }}</td>
                         <td class="redeem_uc{{ $user->id }}">{{ $user->redeem_uc }}</td>
-                        {{--  <td class="status{{ $user->id }}">{{ $user->status }}</td>  --}}
+                        <td class="status{{ $user->id }}">{{ $user->status }}</td>
                             {{--  @if($user->email!="2k9140@gmail.com")  --}}
-                            {{--  <td><div class="btn-group">
+                            <td><div class="btn-group">
                               <button type="button" id="redeem_button{{$user->id}}" onclick="redeem({{$user->id}},{{$user->redeem_uc}})" class="btn {{$user->status== "1" ? "btn-danger": "btn-success"}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{$user->status==1?"Action":"OK"}}
                               </button>
 
                             </div
 
-                         </td>  --}}
+                         </td>
                          {{--  @endif  --}}
                     </tr>
                   @endforeach

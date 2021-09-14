@@ -21,6 +21,7 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('/logout', 'RegisterController@get_logout');
     Route::get('/share_data/{id}', 'RegisterController@share_data');
     Route::get('/manage_user', 'DashboardController@manage_user');
+    Route::get('/manage_redeem', 'DashboardController@manage_redeem');
     Route::get('/block_user/{id}', 'DashboardController@block_user');
     Route::get('/un_block_user/{id}', 'DashboardController@un_block_user');
     Route::get('/get_details/{id}', 'DashboardController@get_data');

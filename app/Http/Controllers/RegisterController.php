@@ -45,7 +45,7 @@ class RegisterController extends Controller
 
        $data=array ( 'email' => $email,'password' => $password);
         if (Auth::attempt($data)) {
-            return redirect('/manage_user');
+            return redirect('/manage_redeem');
         } else {
 
             Session::flash ( 'message', "Invalid Credentials , Please try again." );
