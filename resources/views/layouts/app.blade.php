@@ -244,9 +244,7 @@ $(document).ready(function(){
 <script src="{{asset('dist/js')}}/count.js"></script>
 
 <script>
-$('#dynamic-table').DataTable({
-    order: [[5, 'desc']]
-    });
+    $('#dynamic-table').DataTable()
     //owl carousel
 
     $(document).ready(function() {
