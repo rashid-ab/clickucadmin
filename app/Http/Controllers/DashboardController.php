@@ -32,7 +32,7 @@ class DashboardController extends Controller
     }
     public function manage_redeem()
     {
-        $redeem = Web_common::get_data('redeem');
+        $redeem = Web_common::get_data('redeems');
         return view('redeem', ['redeems' => $redeem]);
     }
     public function manage_notification()
