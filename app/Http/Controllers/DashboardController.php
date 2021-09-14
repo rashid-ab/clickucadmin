@@ -188,7 +188,7 @@ class DashboardController extends Controller
     {
         print_r($request->id);
         $users=User::where('id',$request->user_id)->first();
-        Redeem::where('id',$request->id)->delet();
+        Redeem::find($request->id)->delete();
         $device_token[] = $users->device_token;
         $this->send_push_noti('Congrats! You won '.$request->uc.' UC','Go check your account',$device_token);
         $data="$request->uc sent to your Account!";
