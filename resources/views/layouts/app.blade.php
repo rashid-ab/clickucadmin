@@ -17,7 +17,7 @@ $url = url()->current();
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Get UC</title>
+    <title>Click UC</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('dist/css')}}/bootstrap.min.css" rel="stylesheet">
@@ -101,7 +101,7 @@ li.active a {
               </button>
 
               <!--logo start-->
-              <a href="{{ Url('/manage_user') }}" class="logo"><span>Get UC</span></a>
+              <a href="{{ Url('/manage_user') }}" class="logo"><span>Click UC</span></a>
               <!--logo end-->
               <div class="horizontal-menu navbar-collapse collapse ">
                   <ul class="nav navbar-nav">
@@ -186,7 +186,7 @@ li.active a {
  <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
-            {{ date('Y') }} &copy; Get UC
+            {{ date('Y') }} &copy; Click UC
             <a href="#" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
