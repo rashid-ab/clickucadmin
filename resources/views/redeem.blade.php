@@ -167,7 +167,7 @@
 
 <script type="text/javascript">
     function redeem(user){
-      if($.trim($('#redeem_button'+id).text())!="OK"){
+      if($.trim($('#redeem_button'+user.id).text())!="OK"){
             $('#dynamic-table').DataTable().destroy();
             $.ajax({
                 type: "POST",
