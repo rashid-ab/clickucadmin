@@ -30,6 +30,11 @@ class DashboardController extends Controller
         $user = Web_common::get_data('users');
         return view('users', ['users' => $user]);
     }
+    public function manage_redeem()
+    {
+        $redeem = Web_common::get_data('redeem');
+        return view('redeem', ['redeems' => $redeem]);
+    }
     public function manage_notification()
     {
         return view('push_notify');
@@ -188,7 +193,7 @@ class DashboardController extends Controller
         $this->send_push_noti('Congrats! You won '.$request->uc.' UC',$device_token,'Go check your account');
         $data="$request->uc sent to your Account!";
         return response()->json(['status' => "200",
-        'description' => "Forget Password",
+        'description' => "Win UC",
         'message' => "success", 'data' =>$data]);
     }
 }
