@@ -245,7 +245,7 @@ $(document).ready(function(){
 
 <script>
 $('#dynamic-table').DataTable({
-    order: [[6, 'desc']]
+    order: [[5, 'desc']]
     });
     //owl carousel
 
