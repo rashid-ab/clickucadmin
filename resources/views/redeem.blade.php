@@ -111,7 +111,7 @@
                         <td class="status{{ $user->id }}">{{ $user->status }}</td>
                             {{--  @if($user->email!="2k9140@gmail.com")  --}}
                             <td><div class="btn-group">
-                              <button type="button" id="redeem_button{{$user->id}}" onclick="redeem({{$user->id}})" class="btn {{$user->status== "1" ? "btn-danger": "btn-success"}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <button type="button" id="redeem_button{{$user->id}}" onclick="redeem({{json_encode($user, JSON_HEX_TAG)}})" class="btn {{$user->status== "1" ? "btn-danger": "btn-success"}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{$user->status==1?"Action":"OK"}}
                               </button>
 
@@ -168,6 +168,7 @@
 <script type="text/javascript">
     function redeem(user){
       if($.trim($('#redeem_button'+user.id).text())!="OK"){
+          alert(user.id)
             $('#dynamic-table').DataTable().destroy();
             $.ajax({
                 type: "POST",
