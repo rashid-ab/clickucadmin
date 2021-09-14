@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Redeem extends Model
 {
     protected $fillable = [
-        'redeem_uc','pubg_id','status','uc','coins',
+        'redeem_uc','pubg_id','status','uc','coins','user_id'
     ];
 }
