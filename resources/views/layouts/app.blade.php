@@ -108,10 +108,10 @@ li.active a {
 
 
                       <li class="dropdown <?php if (strpos($url, 'manage_redeem')) {?> active<?php }?>">
-                          <a href="{{url('/manage_redeem')}}">Manage Users</a>
+                          <a href="{{url('/manage_redeem')}}">Manage Redeems</a>
                       </li>
                       <li class="dropdown <?php if (strpos($url, 'manage_user')) {?> active<?php }?>">
-                        <a href="{{url('/manage_user')}}">Manage Redeems</a>
+                        <a href="{{url('/manage_user')}}">Manage Users</a>
                     </li>
                       <li class="dropdown <?php if (strpos($url, 'manage_notification')) {?> active<?php }?>">
                         <a href="{{url('/manage_notification')}}">Manage Notification</a>
