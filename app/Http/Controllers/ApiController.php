@@ -290,6 +290,7 @@ class ApiController extends Controller {
         /*======================  Redeem  =====================*/
 
         public function redeem(Request $request){
+            echo $request->user_id;
             $user=auth('api')->user();
             if(!$user){
                 return response()->json(['status' => "200",
