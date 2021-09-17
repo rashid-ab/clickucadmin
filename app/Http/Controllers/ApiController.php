@@ -32,12 +32,20 @@ class ApiController extends Controller {
 
     /*======================  CHANGE PASSWORD  =====================*/
 	public function change_password(Request $request){
-	    $user=User::where('email',$request->email)->update([
-            'password'=>Hash::make($request->password),
-            ]);
-            return response()->json(['status' => "200",
-			'description' => "Change Password Successfully!",
-			'message' => "success", 'data' => 'Change Password Successfully!']);
+        $user=User::where('email',$request->email)->first();
+        if(Hash::check($request->old_password, $user->password)) {
+            $user=User::where('email',$request->email)->update([
+                'password'=>Hash::make($request->password),
+                ]);
+                return response()->json(['status' => "200",
+                'description' => "Change Password Successfully!",
+                'message' => "success", 'data' => 'Change Password Successfully!']);
+        } else {
+                return response()->json(['status' => "200",
+                'description' => "Change Password Successfully!",
+                'message' => "error", 'data' => 'Old Password is Incorrect']);
+        }
+
 	    }
 
 	/*======================  LOGIN  =====================*/
