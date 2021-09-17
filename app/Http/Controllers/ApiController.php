@@ -301,7 +301,7 @@ class ApiController extends Controller {
             $remianing_coins=$user->coins-$coins;
             $tokenupdate=User::where('email',$request->email)->update([
                 // 'pubg_id' => $request->id,
-                // 'redeem_uc' => $user->redeem_uc+$request->uc,
+                'redeem_no' => $user->redeem_no+1,
                 'uc' => $remianing_uc,
                 'coins' => $remianing_coins,
                 'status'=>1
@@ -310,6 +310,7 @@ class ApiController extends Controller {
                 'user_id'=> $request->user_id,
                 'pubg_id' => $request->id,
                 'redeem_uc' => $request->uc,
+                'redeem_no' => $user->redeem_no+1,
                 'coins' =>$remianing_coins,
                 'uc' =>$remianing_uc,
                 'status'=>1

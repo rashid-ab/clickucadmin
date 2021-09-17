@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration {
 			$table->string('coins', 250)->default(0);
 			$table->string('uc', 250)->default(0);
 			$table->string('redeem_uc', 250)->default(0);
+			$table->string('redeem_no', 250)->default(0);
 			$table->string('total_uc', 250)->default(0);
 			$table->string('total_coins', 250)->default(0);
 			$table->string('password', 1000)->nullable();
