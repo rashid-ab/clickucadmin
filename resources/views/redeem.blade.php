@@ -94,6 +94,7 @@
                 <th>PUBG ID</th>
                 <th>Coins</th>
                 <th>UC</th>
+                <th>Redeem Number</th>
                 <th>Redeem UC</th>
                 <th>Current Status</th>
                 <th>Actions</th>
@@ -107,6 +108,7 @@
                         <td>{{ $user->pubg_id }}</td>
                         <td>{{ $user->coins }}</td>
                         <td>{{ $user->uc }}</td>
+                        <td>{{ $user->redeem_no }}</td>
                         <td class="redeem_uc{{ $user->id }}">{{ $user->redeem_uc }}</td>
                         <td class="status{{ $user->id }}">{{ $user->status }}</td>
                             {{--  @if($user->email!="2k9140@gmail.com")  --}}
