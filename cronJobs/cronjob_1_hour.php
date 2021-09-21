@@ -13,7 +13,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$users = "SELECT * from users WHERE device_token!='' AND  silver_limit!='100' AND  golden_limit!='50' AND  platinum_limit!='30'";
+$users = "SELECT * from users WHERE device_token!='' AND  silver_limit!='100' OR  golden_limit!='50' OR  platinum_limit!='30'";
 // $update = "UPDATE users SET silver_limit='100',golden_limit='50',platinum_limit='30'";
 $users_results = $conn->query($users);
 $userss = $conn->query($update);
