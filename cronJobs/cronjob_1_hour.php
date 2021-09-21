@@ -14,7 +14,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $users = "SELECT * from users WHERE device_token!='' AND  silver_limit!='100' OR  golden_limit!='50' OR  platinum_limit!='30'";
-$update = "UPDATE users SET silver_limit='100',golden_limit='50',platinum_limit='30'";
 $users_results = $conn->query($users);
 
 $users_token=array();
@@ -22,6 +21,7 @@ if ($users_results->num_rows > 0) {
  while($selected_orders = $users_results->fetch_assoc()) {
         unset($users_token);
         $update = "UPDATE users SET silver_limit='100',golden_limit='50',platinum_limit='30' WHERE id='".$selected_orders['id']."'";
+        $conn->query($update);
         $users_token[]= $selected_orders['device_token'];
         $title ="Wow! Your  Crate Limit is Renew Now";
         $body =  "Go to the App and Earn your UC";
