@@ -259,7 +259,7 @@ class ApiController extends Controller {
             if(is_null($email_send)){
                 return response()->json(['status' => "200",
                 'description' => "Forget Password",
-                'message' => "success", 'data' => "No User for this Email!"]);
+                'message' => "failure", 'data' => "No User for this Email!"]);
             }
             else{
                 $hashed_random_password = str_random(8);
