@@ -21,7 +21,7 @@ $users_token=array();
 if ($users_results->num_rows > 0) {
  while($selected_orders = $users_results->fetch_assoc()) {
         unset($users_token);
-        $update = "UPDATE users SET silver_limit='100',golden_limit='50',platinum_limit='30' WHERE id=$selected_orders['device_token']";
+        $update = "UPDATE users SET silver_limit='100',golden_limit='50',platinum_limit='30' WHERE id='".$selected_orders['id']."'";
         $users_token[]= $selected_orders['device_token'];
         $title ="Wow! Your  Crate Limit is Renew Now";
         $body =  "Go to the App and Earn your UC";
