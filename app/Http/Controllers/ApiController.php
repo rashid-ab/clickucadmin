@@ -250,6 +250,25 @@ class ApiController extends Controller {
                 'message' => "success", 'data' => $request->device_token]);
             }
         }
+        
+        /*======================  App Intro  =====================*/
+
+        public function appintro(Request $request){
+            $user=auth('api')->user();
+            if(!$user){
+                return response()->json(['status' => "200",
+                'message' => "failure"]);
+            }
+            $appintro=User::where('email',$request->email)->update([
+                'app_intro' =>1,
+            ]);
+
+            if ($appintro) {
+                return response()->json(['status' => "200",
+                'description' => "Token",
+                'message' => "success", 'data' => '']);
+            }
+        }
 
 
         /*======================  Forget Password  =====================*/
@@ -259,7 +278,7 @@ class ApiController extends Controller {
             if(is_null($email_send)){
                 return response()->json(['status' => "200",
                 'description' => "Forget Password",
-                'message' => "success", 'data' => "No User for this Email!"]);
+                'message' => "failure", 'data' => "No User for this Email!"]);
             }
             else{
                 $hashed_random_password = str_random(8);
@@ -305,7 +324,7 @@ class ApiController extends Controller {
             }
             $user=User::where('email',$request->email)->first();
             $remianing_uc=$user->uc-$request->uc;
-            $coins=$request->uc*1000;
+            $coins=$request->uc*2000;
             $remianing_coins=$user->coins-$coins;
             $tokenupdate=User::where('email',$request->email)->update([
                 // 'pubg_id' => $request->id,

@@ -32,6 +32,7 @@ Route::group([
 
 //  User API's
 Route::post('signup','ApiController@signup');
+Route::post('appintro','ApiController@appintro');
 Route::post('silver_coins','ApiController@silver_coins');
 Route::post('golden_coins','ApiController@golden_coins');
 Route::post('platinum_coins','ApiController@platinum_coins');
