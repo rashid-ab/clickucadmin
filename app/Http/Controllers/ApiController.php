@@ -134,26 +134,35 @@ class ApiController extends Controller {
                 'message' => "failure"]);
             }
             $user=User::where('email',$request->email)->first();
-            $latestcoins = $user->coins+$request->coins;
-            $latesttotalcoins = $user->total_coins+$request->coins;
-            $limit=$user->silver_limit-1;
-            if($request->uc>$user->uc){
-                $uc=1;
+            if($user->silver_limit>0){
+                $latestcoins = $user->coins+$request->coins;
+                $latesttotalcoins = $user->total_coins+$request->coins;
+                
+                $limit=$user->silver_limit-1;
+                if($request->uc>$user->uc){
+                    $uc=1;
+                }
+                else{
+                    $uc=0;
+                }
+                $coins=User::where('email',$request->email)->update([
+                    'coins' => $latestcoins,
+                    'total_coins' => $latesttotalcoins,
+                    'silver_limit' => $limit,
+                    'uc' => $request->uc,
+                    'total_uc' => $user->total_uc+$uc,
+                ]);
+            
+                if ($coins) {
+                    return response()->json(['status' => "200",
+                    'description' => "win Coins",
+                    'message' => "success", 'coins' => $latestcoins,'limit'=>$limit,'uc'=>$user->uc+$uc]);
+                }
             }
             else{
-                $uc=0;
-            }
-            $coins=User::where('email',$request->email)->update([
-                'coins' => $latestcoins,
-                'total_coins' => $latesttotalcoins,
-                'silver_limit' => $limit,
-                'uc' => $request->uc,
-                'total_uc' => $user->total_uc+$uc,
-            ]);
-            if ($coins) {
                 return response()->json(['status' => "200",
                 'description' => "win Coins",
-                'message' => "success", 'coins' => $latestcoins,'limit'=>$limit,'uc'=>$user->uc+$uc]);
+                'message' => "success", 'coins' => $user->coins,'limit'=>$user->silver_limit,'uc'=>$user->uc]);
             }
         }
         /*======================  Golden Coins  =====================*/
@@ -164,6 +173,7 @@ class ApiController extends Controller {
                 'message' => "failure"]);
             }
             $user=User::where('email',$request->email)->first();
+            if($user->golden_limit>0){
             $latestcoins = $user->coins+$request->coins;
             $latesttotalcoins = $user->total_coins+$request->coins;
             $limit=$user->golden_limit-1;
@@ -186,6 +196,12 @@ class ApiController extends Controller {
                 'message' => "success", 'coins' => $latestcoins,'limit'=>$limit,'uc'=>$user->uc+$uc]);
             }
         }
+        else{
+            return response()->json(['status' => "200",
+            'description' => "win Coins",
+            'message' => "success", 'coins' => $user->coins,'limit'=>$user->golden_limit,'uc'=>$user->uc]);
+        }
+        }
         /*======================  Platinum Coins  =====================*/
         public function platinum_coins(Request $request){
             $user=auth('api')->user();
@@ -194,6 +210,7 @@ class ApiController extends Controller {
                 'message' => "failure"]);
             }
             $user=User::where('email',$request->email)->first();
+            if($user->platinum_limit>0){
             $latestcoins = $user->coins+$request->coins;
             $latesttotalcoins = $user->total_coins+$request->coins;
             $limit=$user->platinum_limit-1;
@@ -215,6 +232,12 @@ class ApiController extends Controller {
                 'description' => "win Coins",
                 'message' => "success", 'coins' => $latestcoins,'limit'=>$limit,'uc'=>$user->uc+$uc]);
             }
+        }
+        else{
+            return response()->json(['status' => "200",
+            'description' => "win Coins",
+            'message' => "success", 'coins' => $user->coins,'limit'=>$user->platinum_limit,'uc'=>$user->uc]);
+        }
         }
 
 
